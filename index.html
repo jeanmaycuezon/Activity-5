@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Math in JavaScript</h2>
+
+<div class="container">
+    <label>First Number:</label>
+    <input type="number" id="num1">
+
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="/">/</option>
+        <option value="*">*</option>
+    </select>
+
+    <label>Second Number:</label>
+    <input type="number" id="num2">
+
+    <br><br>
+    <button onclick="calculate()">Solve</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function calculate() {
+    let num1 = parseFloat(document.getElementById("num1").value);
+    let num2 = parseFloat(document.getElementById("num2").value);
+    let operator = document.getElementById("operator").value;
+    let result;
+
+    // If inputs are empty, do nothing
+    if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById("result").innerHTML = "";
+        return;
+    }
+
+    switch(operator) {
+        case "+":
+            result = num1 + num2;
+            break;
+        case "-":
+            result = num1 - num2;
+            break;
+        case "*":
+            result = num1 * num2;
+            break;
+        case "/":
+            if (num2 === 0) {
+                document.getElementById("result").innerHTML = "Result: Cannot divide by zero";
+                return;
+            }
+            result = num1 / num2;
+            break;
+    }
+
+    document.getElementById("result").innerHTML = "Result: " + result;
+}
+</script>
+
+</body>
+</html>
